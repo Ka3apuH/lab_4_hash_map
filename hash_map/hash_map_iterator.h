@@ -32,7 +32,7 @@ namespace h_work {
                   now_pos.operator++();
                 }
 
-                if(now_pos==_vector.end())return nullptr;
+                if(now_pos==_vector.end())return hash_map_iterator(0, nullptr);
 
                 this->_hash = now_pos.operator*().begin().operator*()._hash;
             }

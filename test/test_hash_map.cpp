@@ -31,11 +31,6 @@ TEST_F(Testing_main_func_priority_queue,add_element){
 
     test_map.del_elem(163422452);
 
-
-    /*for (auto i = test_map.begin(); i!=test_map.end(); i++) {
-        std::cout << i* << std::endl();
-    }*/
-
     h_work::hash_map<int,int> aa{{1,2},{23,23}};
 
     real_map.insert({{0,"efebb"},{1,"rbgrtbrtbrt"}});

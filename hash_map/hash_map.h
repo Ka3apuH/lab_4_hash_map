@@ -41,13 +41,13 @@ namespace h_work{
             while (now_pos!=mass.end() && now_pos->empty()) {
                 now_pos.operator++();
             }
-            if(now_pos==mass.end())return nullptr;
+            if(now_pos==mass.end())return iterator(0, (std::vector<std::list<type_node>> &) (std::vector<std::list<type_node>> &) nullptr);
 
             return iterator(now_pos->begin()->_hash,mass);
         }
 
         iterator end(){
-            return nullptr;
+            return iterator(0, (std::vector<std::list<type_node>> &)nullptr);
         }
 
         iterator insert(reference element){
@@ -78,7 +78,7 @@ namespace h_work{
 
         bool del_elem(_key key){
 
-            auto hash=hash_func{}(key);
+            size_t hash=hash_func{}(key);
 
             std::list<type_node>& curent_list=mass.at(std::modulus<>()(hash ,num_lists));
 
@@ -113,16 +113,18 @@ namespace h_work{
 
              if(get_now_load_factor()<load_factor_max) {
                  num_lists = 2 * num_lists + 1;
-             }
-
-             if(get_now_load_factor()>load_factor_min && num_lists>lim_MAX_num_list){
+             } else if(get_now_load_factor()>load_factor_min && num_lists>lim_MAX_num_list){
                  num_lists=(num_lists-1)/2;
+             } else{
+                 return;
              }
 
                  auto mass_next =std::vector<std::list<type_node>>(num_lists);
-                 for (auto i = mass.begin();i < mass.end(); ++i) {
+                 for (auto i = mass.begin();i != mass.end(); ++i) {
                      if(!i->empty()) {
-                         mass_next.at(std::modulus<>()((i->begin()->_hash) , num_lists)) = std::list<type_node>(*i);
+                         for (auto k=i->begin();k!=i->end(); ++k) {
+                             mass_next.at(std::modulus<>()((k->_hash) , num_lists)).push_back(*k);
+                         }
                      }
                  }
 
