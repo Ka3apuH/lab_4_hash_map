@@ -50,8 +50,8 @@ else()
             )
 endif()
 
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_HOME_DIRECTORY}/lab_1/Unit_test)
-install(FILES ${MAIN_TEST} DESTINATION ${CMAKE_HOME_DIRECTORY}/lab_1/Unit_test )
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_HOME_DIRECTORY}/lab_4/Unit_test)
+install(FILES ${MAIN_TEST} DESTINATION ${CMAKE_HOME_DIRECTORY}/lab_4/Unit_test )
 
-#set(CPACK_GENERATOR "DEB")
-#include(CPack)
+set(CPACK_GENERATOR "DEB")
+include(CPack)

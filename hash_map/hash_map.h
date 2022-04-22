@@ -6,6 +6,7 @@
 
 #include <functional>
 #include <cmath>
+#include <algorithm>
 
 #define start_num_list 16
 #define lim_MAX_num_list 1024
@@ -22,30 +23,43 @@ namespace h_work{
     public:
 
         typedef hash_node<std::pair<const _key,_maped_type>> type_node;
-        typedef hash_node<std::pair<const _key,_maped_type>>* type_node_link;
         typedef std::pair<const _key,_maped_type> reference;
 
-    protected:
+//    protected:
         class hash_equal_to;
-    public:
+//    public:
 
-        typedef hash_map_iterator<type_node,hash_equal_to> iterator;
+        typedef hash_map_iterator<_key,_maped_type,hash_equal_to> iterator;
 
         /**
          * коструктор
          * */
         hash_map() :mass(num_lists){}
 
-        iterator insert(reference element){
+        iterator begin(){
+            auto now_pos=mass.begin();
+            while (now_pos!=mass.end() && now_pos->empty()) {
+                now_pos.operator++();
+            }
+            if(now_pos==mass.end())return nullptr;
 
-            num_element++;
+            return iterator(now_pos->begin()->_hash,mass);
+        }
+
+        iterator end(){
+            return nullptr;
+        }
+
+        iterator insert(reference element){
 
             rehash();
 
-            auto hash=hash_func{}(element.first);
-            if(mass.at(std::modulus<>()(hash ,num_lists)).empty()||
-            std::find(mass.begin(), mass.end(),key_equal_to(element.first)())) {
-                mass.at(std::modulus<>()(hash ,num_lists)).push_back(hash_node<reference>(element, hash));
+            size_t hash=hash_func{}(element.first);
+            std::list<type_node>& curent_list=mass.at(std::modulus<>()(hash ,num_lists));
+
+            if(curent_list.empty() || std::find_if(curent_list.begin(), curent_list.end(),hash_equal_to(hash))==curent_list.end()) {
+                curent_list.push_back(hash_node<reference>(element, hash));
+                num_element++;
             }
 
            return iterator(hash,mass);
@@ -66,12 +80,23 @@ namespace h_work{
 
             auto hash=hash_func{}(key);
 
-            if(mass.at(std::modulus<>()(hash,num_lists))== nullptr ||
-                    mass.at(std::modulus<>()(hash,num_lists)).empty())return false;
+            std::list<type_node>& curent_list=mass.at(std::modulus<>()(hash ,num_lists));
 
-            mass.at(std::modulus<>()(hash,num_lists)).clear();
+            if(curent_list.empty()){
+                return false;
+            }
+
+            auto curent_elem_iter=std::find_if(curent_list.begin(), curent_list.end(),hash_equal_to(hash));
+
+            if(curent_elem_iter==curent_list.end()) {
+                return false;
+            }
+
+            curent_list.erase(curent_elem_iter);
+
             num_element--;
             rehash();
+
             return true;
         }
 
@@ -82,7 +107,7 @@ namespace h_work{
             mass.resize(num_lists);
         }
 
-    private:
+ //   private:
 
          void rehash(){
 
@@ -106,8 +131,8 @@ namespace h_work{
              std::destroy(mass_next.begin(), mass_next.end());
         }
 
-    protected:
-        class key_equal_to: std::unary_function<type_node ,bool>{
+ //   protected:
+/*        class key_equal_to: std::unary_function<type_node ,bool>{
 
         private:
             _pred equal;
@@ -120,7 +145,7 @@ namespace h_work{
 
             bool operator()( type_node _x)
             { return equal(key,_x._inf.first); }
-        };
+        };*/
 
         class hash_equal_to: std::unary_function<type_node ,bool>{
 
@@ -131,7 +156,7 @@ namespace h_work{
 
             explicit hash_equal_to(size_t input_hash): hash_for_eq(input_hash){};
 
-            bool operator()( type_node& _x)
+            bool operator()(type_node _x)
             { return std::equal_to<>()(hash_for_eq,_x._hash); }
         };
 

@@ -6,27 +6,35 @@
 #include <random>
 
 #include "test_hash_map.h"
+#include "hash_map_iterator.h"
 
 using namespace h_work;
 using namespace std;
 
 TEST_F(Testing_main_func_priority_queue,add_element){
-    test_heap.insert(std::pair<unsigned int,std::string>(12,"gfbrgbgb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(13452,"gfbryyhtygb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(1235,"gfbrgbgtynmtymb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(16452,"gfbrgbgyntymtytntynb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(12,"gfbrgbgb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(13452,"gfbryyhtygb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(1235,"gfbrgbgtynmtymb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(16452,"gfbrgbgyntymtytntynb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(12,"gfbrgbgb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(13452,"gfbryyhtygb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(1235,"gfbrgbgtynmtymb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(16452,"gfbrgbgyntymtytntynb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(12,"gfbrgbgb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(13452,"gfbryyhtygb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(1235,"gfbrgbgtynmtymb"));
-    test_heap.insert(std::pair<unsigned int,std::string>(16452,"gfbrgbgyntymtytntynb"));
+    //auto iter=test_map.insert(std::pair<unsigned int,std::string>(12, "gfbrgbgb"));
+    test_map.insert(std::pair<unsigned int,std::string>(1, "gfbryyhtygb"));
+    test_map.insert(std::pair<unsigned int,std::string>(2, "gfbrgbgtynmtymb"));
+    test_map.insert(std::pair<unsigned int,std::string>(3, "gfbrgbgyntymtytntynb"));
+    test_map.insert(std::pair<unsigned int,std::string>(4, "gfbrgbgb"));
+    test_map.insert(std::pair<unsigned int,std::string>(5, "gfbryyhtygb"));
+    test_map.insert(std::pair<unsigned int,std::string>(435, "gfbrgbgtynmtymb"));
+    test_map.insert(std::pair<unsigned int,std::string>(163422452, "gfbrgbgyntymtytntynb"));
+    test_map.insert(std::pair<unsigned int,std::string>(12234, "gfbrgbgb"));
+    test_map.insert(std::pair<unsigned int,std::string>(13423552, "gfbryyhtygb"));
+    test_map.insert(std::pair<unsigned int,std::string>(1235235, "gfbrgbgtynmtymb"));
+    test_map.insert(std::pair<unsigned int,std::string>(16452352, "gfbrgbgyntymtytntynb"));
+    test_map.insert(std::pair<unsigned int,std::string>(12325, "gfbrgbgb"));
+    test_map.insert(std::pair<unsigned int,std::string>(134523452, "gfbryyhtygb"));
+    test_map.insert(std::pair<unsigned int,std::string>(1235235, "gfbrgbgtynmtymb"));
+    test_map.insert(std::pair<unsigned int,std::string>(164523552, "gfbrgbgyntymtytntynb"));
+
+    test_map.del_elem(163422452);
+
+
+    /*for (auto i = test_map.begin(); i!=test_map.end(); i++) {
+        std::cout << i* << std::endl();
+    }*/
 
     h_work::hash_map<int,int> aa{{1,2},{23,23}};
 

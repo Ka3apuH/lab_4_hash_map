@@ -17,12 +17,12 @@ protected:
     }
     void TearDown() override {
         real_map.clear();
-        test_heap.clear();
+        test_map.clear();
     }
 
 // объекты тестового окружения, доступные в каждом тесте
     std::unordered_map<unsigned int,std::string> real_map;
-    h_work::hash_map<unsigned int,std::string> test_heap;
+    h_work::hash_map<unsigned int,std::string> test_map;
     std::random_device randomDevice;
 };
 
