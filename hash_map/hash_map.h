@@ -41,13 +41,13 @@ namespace h_work{
             while (now_pos!=mass.end() && now_pos->empty()) {
                 now_pos.operator++();
             }
-            if(now_pos==mass.end())return iterator(0, (std::vector<std::list<type_node>> &) (std::vector<std::list<type_node>> &) nullptr);
+            if(now_pos==mass.end())return iterator(0, std::vector<std::list<type_node>>(0));
 
             return iterator(now_pos->begin()->_hash,mass);
         }
 
         iterator end(){
-            return iterator(0, (std::vector<std::list<type_node>> &)nullptr);
+            return iterator(0, std::vector<std::list<type_node>>(0));
         }
 
         iterator insert(reference element){

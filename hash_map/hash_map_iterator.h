@@ -32,7 +32,7 @@ namespace h_work {
                   now_pos.operator++();
                 }
 
-                if(now_pos==_vector.end())return hash_map_iterator(0, nullptr);
+                if(now_pos==_vector.end())return hash_map_iterator(0, std::vector<list_of_nodes>(0));
 
                 this->_hash = now_pos.operator*().begin().operator*()._hash;
             }

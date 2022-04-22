@@ -1,43 +1,40 @@
+## Задача:
+реализовать контейнер `hash_map`.
 
-###Задача:
-реализовать контейнер-адаптер `priority_queue`. Принцип работы очереди:
-первым извлекается наибольший элемент. Контейнер должен
-обеспечивать логарифмическое время работы для добавления и удаления элемента.
+### реализуемый класс очереди:
+[`priority_queue`](hash_map/hash_map.h) находится в
+<pre>$PROJECT_DIR$/hash_map</pre>
 
-###реализуемый класс очереди:
-[`priority_queue`](priority_queue/priority_queue.h) находится в
-<pre>$PROJECT_DIR$/priority_queue/priority_queue.h</pre>
-
-###тестирование класса:
+### тестирование класса:
 тестирование данного класса : [`lab1_priority_queue_TEST`](test/priority_queue_TEST.cpp) находится в
 <pre> $PROJECT_DIR$/test/priority_queue_TEST.cpp </pre>
 
 Для запуска тестирования данного класса неоходимо выполнить следующее:
 
-####собрать проект
+#### собрать проект
 ```bash
 $ mkdir build
 $ cd build/
 $ cmake ..
 $ make 
 ```
-####запустить тестирование
+#### запустить тестирование
 ```bash
-./test/lab1_priority_queue_TEST
+./test/test_hash_map
 ```
-![alt text](images/Снимок%20экрана%20от%202022-02-24%2005-40-34.png "Описание будет тут")
-###banchmark метода класса `add_element`:
+
+### banchmark метода класса `add_element`:
 
 banchmark : [`lab1_priority_queue_BENCHMARK`](Benchmark/benchmark_priority_queue.cpp) находится в
 <pre> $PROJECT_DIR$/Benchmark/benchmark_priority_queue.cpp </pre>
 
 Для запуска banchmark метода данного класса неоходимо выполнить следующее:
 
-####собрать проект
+#### собрать проект
 ```bash
 $...
 ```
-####запустить banchmark
+#### запустить banchmark
 ```bash
 ./Benchmark/lab1_priority_queue_BENCHMARK
 ```

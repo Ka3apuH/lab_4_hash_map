@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 project(lab4_hash_map_BENCHMARK)
 
-set(MAIN_BENCHMARK_TEST benchmark_hash_map.cpp benchmark_hash_map.h ../hash_map/hash_map_iterator.h ../hash_map/hash_node.h)
+set(MAIN_BENCHMARK_TEST benchmark_hash_map.cpp benchmark_hash_map.h)
 
 include(FetchContent)
 
