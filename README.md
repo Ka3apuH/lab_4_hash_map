@@ -1,13 +1,13 @@
 ## Задача:
 реализовать контейнер `hash_map`.
 
-### реализуемый класс очереди:
-[`priority_queue`](hash_map/hash_map.h) находится в
+### реализуемый класс map:
+[`hash_map`](hash_map/hash_map.h) находится в
 <pre>$PROJECT_DIR$/hash_map</pre>
 
 ### тестирование класса:
-тестирование данного класса : [`lab1_priority_queue_TEST`](test/priority_queue_TEST.cpp) находится в
-<pre> $PROJECT_DIR$/test/priority_queue_TEST.cpp </pre>
+тестирование данного класса : [`lab4_hash_map_TEST`](test/priority_queue_TEST.cpp) находится в
+<pre> $PROJECT_DIR$/test/test_hash_map.cpp </pre>
 
 Для запуска тестирования данного класса неоходимо выполнить следующее:
 
@@ -23,26 +23,22 @@ $ make
 ./test/test_hash_map
 ```
 
-### banchmark метода класса `add_element`:
+### banchmark методов класса `insert` и `del_elem`:
 
-banchmark : [`lab1_priority_queue_BENCHMARK`](Benchmark/benchmark_priority_queue.cpp) находится в
-<pre> $PROJECT_DIR$/Benchmark/benchmark_priority_queue.cpp </pre>
+banchmark : [`lab4_hash_map_BENCHMARK`](Benchmark/benchmark_hash_map.cpp) находится в
+<pre> $PROJECT_DIR$/Benchmark/benchmark_hash_map.cpp </pre>
 
 Для запуска banchmark метода данного класса неоходимо выполнить следующее:
 
 #### собрать проект
 ```bash
-$...
+$..."прошлая сборка"
 ```
 #### запустить banchmark
 ```bash
 ./Benchmark/lab1_priority_queue_BENCHMARK
 ```
 
-![alt text](images/Снимок%20экрана%20от%202022-02-24%2005-47-46.png "Описание будет тут")
-Как можно заметить на данном скрине добавление элемента очень сильно приближенно к сложности 
+Как можно заметить добавление элемента и удаление очень сильно приближенно к сложности 
 
-`O(ln N)`
-
- причем это добавление сразу `N` элементов (пока не придумал как проверить добавление сразу к заполненной очереди добавить 1 элемент)
-и при этом логприфмическая сложность на 93%
+`O(1)`
